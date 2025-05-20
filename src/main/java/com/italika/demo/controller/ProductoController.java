@@ -15,17 +15,32 @@ import com.italika.demo.exception.BusinessException;
 import com.italika.demo.model.ProductoModel;
 import com.italika.demo.service.ProductoService;
 
+/**
+ * The Class ProductoController.
+ */
 @RestController
 @RequestMapping("/italika/rest/v1.0/privado")
 @CrossOrigin
 public class ProductoController {
 
+	/** The producto service. */
 	private ProductoService productoService;
 	
+	/**
+	 * Instantiates a new producto controller.
+	 *
+	 * @param prodService the prod service
+	 */
 	public ProductoController(ProductoService prodService) {
 		this.productoService = prodService;
 	}
 	
+	/**
+	 * Save.
+	 *
+	 * @param productoModel the producto model
+	 * @return the object
+	 */
 	@PostMapping(value = "/producto", produces = { "application/json" })
 	public Object save(@RequestBody ProductoModel productoModel){
 		try {
@@ -35,6 +50,13 @@ public class ProductoController {
 		}
 	}
 	
+	/**
+	 * Update.
+	 *
+	 * @param id the id
+	 * @param productoModel the producto model
+	 * @return the object
+	 */
 	@PutMapping(value = "/producto/{id}", produces = { "application/json" })
 	public Object update(@PathVariable int id, @RequestBody ProductoModel productoModel){
 		try {
@@ -44,11 +66,23 @@ public class ProductoController {
 		}
 	}
 	
+	/**
+	 * Gets the producto.
+	 *
+	 * @return the producto
+	 * @throws BusinessException the business exception
+	 */
 	@GetMapping(value = "/producto" , produces = { "application/json" })
 	public Object getProducto() throws BusinessException{
 		return this.productoService.getProductos();
 	}
 
+	/**
+	 * Gets the producto.
+	 *
+	 * @param id the id
+	 * @return the producto
+	 */
 	@GetMapping(value = "/producto/{id}", produces = { "application/json" })
 	public Object getProducto(@PathVariable int id) {
 		try {
@@ -58,6 +92,12 @@ public class ProductoController {
 		}
 	}
 	
+	/**
+	 * Gets the busines.
+	 *
+	 * @param be the be
+	 * @return the busines
+	 */
 	private Object getBusines(BusinessException be) {
 		int numberHTTPDesired = Integer.parseInt(be.getErrorResponse().getCode());
 		return new ResponseEntity<>(be.getErrorResponse(), HttpStatus.valueOf(numberHTTPDesired));

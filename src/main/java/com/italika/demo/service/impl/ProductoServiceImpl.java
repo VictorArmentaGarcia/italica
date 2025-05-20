@@ -15,16 +15,26 @@ import com.italika.demo.model.ProductoModel;
 import com.italika.demo.repository.ProductoRepo;
 import com.italika.demo.service.ProductoService;
 
-import jakarta.transaction.Transactional;
-
+/**
+ * The Class ProductoServiceImpl.
+ */
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
+	/** The producto repo. */
 	@Autowired
 	private ProductoRepo productoRepo;
 	
+	/** The mensaje vacio. */
 	private final String MENSAJE_VACIO = "No existe producto";
 	
+	/**
+	 * Save producto.
+	 *
+	 * @param productoModel the producto model
+	 * @return the producto model
+	 * @throws BusinessException the business exception
+	 */
 	@Override
 	public ProductoModel saveProducto(ProductoModel productoModel) throws BusinessException {
 		try {
@@ -36,6 +46,14 @@ public class ProductoServiceImpl implements ProductoService {
 		}
 	}
 
+	/**
+	 * Update producto.
+	 *
+	 * @param id the id
+	 * @param productoModel the producto model
+	 * @return the object
+	 * @throws BusinessException the business exception
+	 */
 	@Override
 	public Object updateProducto(int id, ProductoModel productoModel) throws BusinessException {
 		try {
@@ -57,6 +75,12 @@ public class ProductoServiceImpl implements ProductoService {
 		}
 	}
 
+	/**
+	 * Gets the productos.
+	 *
+	 * @return the productos
+	 * @throws BusinessException the business exception
+	 */
 	@Override
 	public Object getProductos() throws BusinessException {
 		try {
@@ -72,6 +96,13 @@ public class ProductoServiceImpl implements ProductoService {
 		}
 	}
 
+	/**
+	 * Gets the producto.
+	 *
+	 * @param idProductoModel the id producto model
+	 * @return the producto
+	 * @throws BusinessException the business exception
+	 */
 	@Override
 	public Object getProducto(int idProductoModel) throws BusinessException {
 		try {
@@ -87,6 +118,12 @@ public class ProductoServiceImpl implements ProductoService {
 		}
 	}
 
+	/**
+	 * Delete producto.
+	 *
+	 * @param idProducto the id producto
+	 * @return the generic model
+	 */
 	@Override
 	public GenericModel deleteProducto(int idProducto) {
 		// TODO Auto-generated method stub

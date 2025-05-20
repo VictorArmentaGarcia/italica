@@ -18,10 +18,5 @@ public final class Constantes {
 	
 	public static final String ERROR_GENERICO = "Error de aplicación";
 	
-	public static final String FALLA_STR_DATE = "Falla al transformar fecha";
-	
-	public static final String REGEXT_STR_MAYUS = "[A-Z].*";
-	
-	public static final String MENSAJE_FALLA = "Campo solo de letras mayusculas";
 	
 }
