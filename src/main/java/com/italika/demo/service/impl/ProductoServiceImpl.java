@@ -14,6 +14,7 @@ import com.italika.demo.model.GenericModel;
 import com.italika.demo.model.ProductoModel;
 import com.italika.demo.repository.ProductoRepo;
 import com.italika.demo.service.ProductoService;
+import com.italika.demo.service.ValidaProducto;
 
 /**
  * The Class ProductoServiceImpl.
@@ -24,6 +25,12 @@ public class ProductoServiceImpl implements ProductoService {
 	/** The producto repo. */
 	@Autowired
 	private ProductoRepo productoRepo;
+	
+	private ValidaProducto validar;
+	
+	public ProductoServiceImpl(ValidaProducto valida){
+		this.validar = valida;
+	}	
 	
 	/** The mensaje vacio. */
 	private final String MENSAJE_VACIO = "No existe producto";
@@ -38,6 +45,7 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public ProductoModel saveProducto(ProductoModel productoModel) throws BusinessException {
 		try {
+			validar.ValidaProducto(productoModel, false);
 			ProductoEntity prodEntity = new ProductoEntity(productoModel);
 			productoRepo.save(prodEntity);
 			return new ProductoModel(prodEntity);	
@@ -57,6 +65,7 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public Object updateProducto(int id, ProductoModel productoModel) throws BusinessException {
 		try {
+			validar.ValidaProducto(productoModel, false);
 			Optional<ProductoEntity> prodEntity = productoRepo.findById(id);
 			
 			if(!prodEntity.isPresent()) {
