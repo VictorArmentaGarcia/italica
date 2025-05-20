@@ -35,7 +35,7 @@ public class ProductoController {
 		}
 	}
 	
-	@PutMapping(value = "/producto", produces = { "application/json" })
+	@PutMapping(value = "/producto/{id}", produces = { "application/json" })
 	public Object update(@PathVariable int id, @RequestBody ProductoModel productoModel){
 		try {
 			return this.productoService.updateProducto(id, productoModel);
