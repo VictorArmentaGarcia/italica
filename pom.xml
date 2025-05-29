@@ -88,9 +88,7 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.12.5</version>
 			<scope>runtime</scope>
-		</dependency>		
-		
-		
+		</dependency>
 	</dependencies>
 
 	<build>
